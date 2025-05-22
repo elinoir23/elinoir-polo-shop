@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elinoir Polo Shirt Store</title>
+    <style>
+        body
+        {
+            font-family: sans-serif;
+            background-image: url("content://com.android.externalstorage.documents/tree/primary%3Atreb/document/primary%3Atreb%2Fbackground%20elinoir.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .product
+        {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .product img
+        {
+            max-width: 100%;
+            height: auto;
+        }
+        #products
+        {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Elinoir Polo Shirt Store</h1>
+        <nav>
+            <a href="">Facebook: Ian Cedrick Balaguer</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Polo Shirts</h2>
+        <section id="products">
+            <div class="product">
+                <img src="content://com.android.externalstorage.documents/tree/primary%3Atreb/document/primary%3Atreb%2Fpolo_1.jpeg" alt="Polo Shirt 1">
+                <h3>Under Armour Polo Shirt</h3>
+                <p>Classic white Under Armour polo shirt. Perfect for a casual day or a round of golf.</p>
+                <p>Price: 175₱</p>
+                
+            </div>
+            <div class="product">
+                <img src="content://com.android.externalstorage.documents/tree/primary%3Atreb/document/primary%3Atreb%2Fpolo_2.jpeg" alt="Polo Shirt 2">
+                <h3></h3>
+                <h3>classic blue polo with stripes</h3>
+                <p>A classic blue polo good for any occasion</p>
+                <p>Price: 100₱</p>
+                
+            </div>
+            <div class="product">
+                <img src="content://com.android.externalstorage.documents/tree/primary%3Atreb/document/primary%3Atreb%2Fpolo_3.jpeg" alt="Polo Shirt 3">
+                </h3>
+                <h3>black short-sleeved button-down polo</h3>
+                <p>Great for everyday casual wear, running errands, or relaxing at home.</p>
+                <p>Price: 200₱</p>
+                
+            </div>
+        
+<html>
+  <head>
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <h1>Shopping Cart</h1>
+    <div id="cart">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total:</td>
+            <td id="total"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
+    <div>
+        <span>Rating:</span>
+        <input type="number" id="rating-1" min="1" max="5">
+        <button onclick="submitRating(1)">Submit Rating</button>  </div> </div>
+
+    <script>
+      const cartItems = [
+        { id: 1, name: "Under Armour Polo Shirt", price: 175, quantity: 0 },
+        { id: 2, name: "Classic Blue Polo", price: 100, quantity: 0 },
+        { id: 3, name: "Classic Blue Polo", price: 100, quantity: 0 },
+      ];
+
+      function updateCart() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
+
+        cartItems.forEach(item => {
+          const row = cartItemsContainer.insertRow();
+          const nameCell = row.insertCell();
+          const priceCell = row.insertCell();
+          const quantityCell = row.insertCell();
+          const subtotalCell = row.insertCell();
+
+          nameCell.textContent = item.name;
+          priceCell.textContent = item.price + "₱";
+
+          const quantityInput = document.createElement("input");
+          quantityInput.type = "number";
+          quantityInput.value = item.quantity;
+          quantityInput.min = 1;
+          quantityInput.addEventListener("change", () => {
+            item.quantity = parseInt(quantityInput.value);
+            updateCart();
+          });
+          quantityCell.appendChild(quantityInput);
+
+          const subtotal = item.price * item.quantity;
+          subtotalCell.textContent = subtotal + "₱";
+          total += subtotal;
+        });
+
+        document.getElementById("total").textContent = total + "₱";
+      }
+
+      updateCart(); 
+      
+    </script>
+  </body>
+</html>
